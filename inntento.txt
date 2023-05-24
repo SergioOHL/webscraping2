@@ -1,0 +1,18 @@
+const cheerio = require('cheerio');
+const request = require('request-promise');
+
+async function init(){
+    const $ = await request ({
+        uri: 'https://www2.aefcm.gob.mx/directorio_escuelas/cct_lista.jsp?nivel_cct=null&delegacion=null&turno_cct=null&TipoConsulta=0&submit=Buscar'
+            transform: body => cheerio.load(body)
+            
+            });
+            
+            const variable =  $('table');
+            console.log(variable.html);
+    console.log(response);
+    
+ 
+}
+
+init();
